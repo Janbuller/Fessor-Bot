@@ -45,15 +45,19 @@ var time = {
     },
     "restart": function() {
       'use strict';
-      setTimeout(function () {
-      document.getElementsByClassName("big")[0].click();
-      setTimeout(function () {
-      	func.main();
-      }, time.afterStart)
+      setTimeout(function() {
+        document.getElementsByClassName("big")[0].click();
+        setTimeout(function() {
+          func.main();
+        }, time.afterStart)
       }, time.beforeStart)
     },
     "firstStart": function(option) {
       'use strict';
+      time.beforeStart = parseInt((prompt("Time before start in ms") || time.beforeStart), 10);
+      time.afterStart = parseInt((prompt("Time after start in ms") || time.beforeStart), 10);
+      time.betweenNumbers = parseInt((prompt("Time between each number in ms") || time.betweenNumbers), 10);
+      time.beforeFinish = parseInt((prompt("Time before finishing in ms") || time.beforeFinish), 10);
       setTimeout(function() {
         document.getElementsByClassName("big actionButton primary")[0].click();
         setTimeout(function() {
