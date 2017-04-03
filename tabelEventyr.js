@@ -1,9 +1,8 @@
-/*jshint strict: true, evil: true, browser: true, jquery: true*/
 var time = {
-        "beforeStart": 0,
-        "afterStart": 0,
-        "betweenNumbers": 0,
-        "beforeFinish": 0
+        "beforeStart": 100,
+        "afterStart": 100,
+        "betweenNumbers": 100,
+        "beforeFinish": 100
     },
     func = {
         "getTable": function () {
@@ -25,7 +24,6 @@ var time = {
                 if (table === 20) {
                     setTimeout(function () {
                         document.getElementsByClassName("big ready")[0].click();
-                        window.alert("Ayy lmao");
                     }, time.beforeFinish);
                 } else {
                     setTimeout(function () {
@@ -58,12 +56,16 @@ var time = {
         },
         "firstStart": function (option) {
             'use strict';
+            time.beforeStart = parseInt((prompt("Time before start in ms") || time.beforeStart), 10);
+            time.afterStart = parseInt((prompt("Time after start in ms") || time.beforeStart), 10);
+            time.betweenNumbers = parseInt((prompt("Time between each number in ms") || time.betweenNumbers), 10);
+            time.beforeFinish = parseInt((prompt("Time before finishing in ms") || time.beforeFinish), 10);
             setTimeout(function () {
                 document.getElementsByClassName("big actionButton primary")[0].click();
                 setTimeout(function () {
                     func.main(1);
                 }, time.afterStart);
             }, time.beforeStart);
-        },
+        }
     };
 func.firstStart();
