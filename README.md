@@ -1,8 +1,7 @@
 # fessorBot
----
 <b>Denne bot er ikke ment for XP og er mere eller mindre forladt.</b>
   Der er en lille chance for at jeg laver en WebKit extension, men det er ikke ret sandsynligt pga. afgangsprøver.
----
+
 1. Lige nu er der to forskellige scripts. Et til "Tabeleventyr" og et til "De 4 regningsarter", spillene kan findes ved at trykke på 'Spil' knappen øverst på MatematikFessor siden.
 2. Herfra klikker du på det spil du gerne vil botte i. Hvis du vælger "Tabeleventyr" skal du bruge ''tabelEventyr.js'' og hvis du vælger "De 4 regningsarter" skal du bruge ''4RegningsArter.js''.
 3. Vælg her dit niveau og tryk.
