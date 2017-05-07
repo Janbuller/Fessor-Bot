@@ -6,8 +6,8 @@
 // @author       HarshWombat ( https://github.com/HarshWombat )
 // @match        *www.matematikfessor.dk/*
 // @grant        none
-// @updateURL   https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.js
-// @downloadURL https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.js
+// @updateURL    https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.js
+// @downloadURL  https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.js
 // ==/UserScript==
 
 (function () {
