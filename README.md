@@ -6,7 +6,7 @@
 	 - [Edge](https://www.microsoft.com/store/apps/9NBLGGH5162S)
 	 - [Opera Next](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)
  2. Installer scriptet
-	 1. Tryk [her](https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.js)
+	 1. Tryk [her](https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.user.js)
 	 2. Tryk på *Install*
  3. Gå til:
 	1. [MatematikFessor](https://matematikfessor.dk/)
