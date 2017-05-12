@@ -4,10 +4,10 @@
 // @version      0.1
 // @description  Lav XP i MatematikFessor
 // @author       HarshWombat ( https://github.com/HarshWombat )
-// @match        *www.matematikfessor.dk/*
+// @match        https://www.matematikfessor.dk/*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.user.js
-// @downloadURL  https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.user.js
+// @updateURL    https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.js
+// @downloadURL  https://raw.githubusercontent.com/HarshWombat/fessorBot/master/gangeMed0.js
 // ==/UserScript==
 
 (function () {
@@ -21,7 +21,7 @@
                 clearInterval(loadCheck);
             }
         }, 100);
-    } else if (pathName.match(/^\/test\/result\/\d+$/)) { //Hvis vi er ved en "fivesharp" test
+    } else if (pathName.match(/^\/test\/result\/\d+$/)) { //Hvis vi er ved resultatet af en test
         loadCheck = setInterval(function () {
             if (document.getElementById("recreateTestBtn") && document.getElementsByClassName("evaluateAnswer")[0]) {
                 resultLoaded();
