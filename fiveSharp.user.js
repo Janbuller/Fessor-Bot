@@ -57,9 +57,15 @@ function saveAnswers(answers) {
         xhr.setRequestHeader("X-User-Id", userInfo.userData.id);
         xhr.setRequestHeader("X-Timestamp-Sent", new Date().getTime());
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onloadend = function () {
+            returned[i] = true;
+            if (returned.indexOf(false) === -1) {
+                finishTest();
+            }
+        }
+        returned[i] = false;
         xhr.send("data%5Bquestion_id%5D=" + testInfo.questions[i].Question.id + "&data%5Banswer%5D=" + answers[i] + "&data%5Btest_id%5D=" + testInfo.testSettings.Test.id + "&data%5Bmodel%5D=" + testInfo.testSettings.model);
     }
-    finishTest();
 }
 
 function finishTest() {

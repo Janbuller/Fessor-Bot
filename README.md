@@ -1,7 +1,7 @@
 fessorBot!
 --------------
  1. Installer TamperMonkey til din browser: 
-	 -  [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+	 - [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 	 - [Firefox](https://addons.mozilla.org/da/firefox/addon/tampermonkey/)
 	 - [Safari](https://safari.tampermonkey.net/tampermonkey.safariextz)
 	 - [Edge](https://www.microsoft.com/store/apps/9NBLGGH5162S)
