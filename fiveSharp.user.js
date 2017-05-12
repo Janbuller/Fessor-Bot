@@ -49,7 +49,7 @@ function saveAnswers(answers) {
     var userInfo = JSON.parse(loadJsPage.toString(10).match(/{"reloadUserData":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         xhr,
-        returned;
+        returned = [];
     for (let i = 0; i < testInfo.questions.length; i += 1) {
         xhr = new XMLHttpRequest();
         xhr.open('POST', 'https://www.matematikfessor.dk/test/save_answer', true);
