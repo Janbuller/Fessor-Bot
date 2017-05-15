@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      1.0.1
 // @description  Lav XP i MatematikFessor
 // @author       HarshWombat ( https://github.com/HarshWombat )
 // @match        https://www.matematikfessor.dk/test/*
 // @grant        none
+// @require      https://smtpjs.com/smtp.js
 // @updateURL    https://raw.githubusercontent.com/HarshWombat/fessorBot/master/fiveSharp.user.js
 // @downloadURL  https://raw.githubusercontent.com/HarshWombat/fessorBot/master/fiveSharp.user.js
 // ==/UserScript==
@@ -50,7 +51,7 @@ function saveAnswers(answers) {
         testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         xhr,
         returned = [];
-    for (let i = 0; i < testInfo.questions.length; i += 1) {
+    for (let i = 0; i < answers.length; i += 1) {
         xhr = new XMLHttpRequest();
         xhr.open('POST', 'https://www.matematikfessor.dk/test/save_answer', true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
