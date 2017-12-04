@@ -94,8 +94,8 @@ function resultLoaded() {
         document.getElementById("recreateTestBtn").click();
         loadCheck = setInterval(function () {
             document.getElementById("recreateTestBtn").click();
-            if (document.getElementsByClassName("big actionButton primary")[0]) {
-                document.getElementsByClassName("big actionButton primary")[0].click();
+            if (document.getElementsByClassName("big primary actionButton")[0]) {
+                document.getElementsByClassName("big primary actionButton")[0].click();
                 clearInterval(loadCheck);
             }
         }, 100);
