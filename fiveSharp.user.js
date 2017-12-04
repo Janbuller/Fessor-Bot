@@ -49,7 +49,7 @@ function saveAnswers(answers) {
     'use strict';
     var userInfo = JSON.parse(loadJsPage.toString(10).match(/{"reloadUserData":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
-        xhr,+
+        xhr,
         returned = [];
     for (let i = 0; i < answers.length; i += 1) {
         xhr = new XMLHttpRequest();
