@@ -36,7 +36,7 @@ function testLoaded() {
     'use strict';
     var testType = document.getElementsByClassName("no-link")[0].innerHTML;
     switch (testType) {
-        case "Gange med 0":
+        case "Gang med 0":
             saveAnswers([0, 0, 0, 0, 0]);
             break;
         default:
