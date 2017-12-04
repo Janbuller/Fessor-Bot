@@ -14,5 +14,5 @@ fessorBot!
 	2. Log in
 	3. Ved startsiden, find menuen *Træning* og vælg *Test dig selv*
 	4. Vælg *5 Skarpe*
-	5. Søg på "Gange med 0"
+	5. Søg på "Gang med 0"
 	6. Start testen
