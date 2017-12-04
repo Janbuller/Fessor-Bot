@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Lav XP i MatematikFessor
 // @author       HarshWombat ( https://github.com/HarshWombat )
 // @match        https://www.matematikfessor.dk/test/*
@@ -49,7 +49,7 @@ function saveAnswers(answers) {
     'use strict';
     var userInfo = JSON.parse(loadJsPage.toString(10).match(/{"reloadUserData":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
-        xhr,
+        xhr,+
         returned = [];
     for (let i = 0; i < answers.length; i += 1) {
         xhr = new XMLHttpRequest();
@@ -86,7 +86,7 @@ function resultLoaded() {
         isTarget = false,
         loadCheck;
     for (i = 0; i < document.getElementsByClassName("no-link").length; i += 1) {
-        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gange med 0") {
+        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0") {
             isTarget = true;
         }
     }
