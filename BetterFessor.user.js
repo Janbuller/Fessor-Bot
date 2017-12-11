@@ -12,7 +12,10 @@
 // ==/UserScript==
 
 function init() {
-  addCounter()
+  if (pathName.match(/^\/test\/fivesharp\/$/)) //Hvis det er en Fivesharp Test
+  {
+    addCounter()
+  }
 }
 
 function addCounter() {
