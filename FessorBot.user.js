@@ -7,8 +7,8 @@
 // @match        https://www.matematikfessor.dk/test/*
 // @grant        none
 // @require      https://smtpjs.com/smtp.js
-// @updateURL    https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/fiveSharp.user.js
-// @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/fiveSharp.user.js
+// @updateURL    https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
+// @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
 // ==/UserScript==
 
 function init() {
