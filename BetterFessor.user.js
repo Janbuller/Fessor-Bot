@@ -12,10 +12,7 @@
 // ==/UserScript==
 
 function init() {
-  if (pathName.match(/^\/test\/fivesharp\/$/)) //Hvis det er en Fivesharp Test
-  {
-    addCounter();
-  }
+  addCounter();
 }
 
 function addCounter() {
@@ -25,3 +22,4 @@ function addCounter() {
   var questionText = document.getElementByClassName("questionText");
   questionText..appendChild(questionDisp);
 }
+init()
