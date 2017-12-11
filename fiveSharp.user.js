@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
 // @grant        none
 // @require      https://smtpjs.com/smtp.js
-// @updateURL    https://raw.githubusercontent.com/Janbuller/fessorBot/master/fiveSharp.user.js
-// @downloadURL  https://raw.githubusercontent.com/Janbuller/fessorBot/master/fiveSharp.user.js
+// @updateURL    https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/fiveSharp.user.js
+// @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/fiveSharp.user.js
 // ==/UserScript==
 
 function init() {
