@@ -26,15 +26,10 @@ function update() {
 }
 
 function addCounter() {
-    var activeQuestion = $(".questionThumb active:first-child").text();
-    //$("#breadcrumbs").append ( `
-    //    <div id="Question Counter">
-    //    <p style="font-size: 24px;">` + $(activeQuestion) + `</p>
-    //    </div>
-    //    ` );
+    var activeQuestion = $(".questionThumb active:first-child").html();
     $("#breadcrumbs").append ( `
         <div id="Question Counter">
-        <p style="font-size: 16px;">Allahu Akbar, Motherfuckers.</p>
+        <p style="font-size: 24px;">` + $(activeQuestion) + `</p>
         </div>
         ` );
 }
