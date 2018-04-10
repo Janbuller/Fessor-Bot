@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      1.0.4
+// @version      1.4
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -37,7 +37,7 @@ function testLoaded() {
     var testType = document.getElementsByClassName("no-link")[0].innerHTML;
     switch (testType) {
         case "Gang med 0":
-            saveAnswers([0, 0, 0, 0, 0]);
+            saveAnswers([0, 0, 0, 0, 0], true);
             break;
         default:
             window.alert(testType + " er ikke understøttet lige nu");
@@ -45,7 +45,7 @@ function testLoaded() {
     }
 }
 
-function saveAnswers(answers) {
+function saveAnswers(answers, finish) {
     'use strict';
     var userInfo = JSON.parse(loadJsPage.toString(10).match(/{"reloadUserData":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
@@ -60,7 +60,7 @@ function saveAnswers(answers) {
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.onloadend = function () {
             returned[i] = true;
-            if (returned.indexOf(false) === -1) {
+            if (returned.indexOf(false) === -1 && finish) {
                 finishTest();
             }
         }
