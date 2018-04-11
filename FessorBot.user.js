@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      3.0
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
 // @grant        none
 // @require      https://smtpjs.com/smtp.js
+// @require      https://unpkg.com/mathjs@4.1.1/dist/math.min.js
 // @updateURL    https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
 // @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
 // ==/UserScript==
@@ -44,10 +45,21 @@ function testLoaded() {
             var id5 =  getMultAnswers(4, 0);
             saveAnswers([0, 0, 0, id4, id5]);
             break;
+        case "4281 + 346 (4-cifret plus 3-cifret)":
+            saveAnswers([getPlusAnswer(0), getPlusAnswer(1), getPlusAnswer(2), getPlusAnswer(3), getPlusAnswer(4)]);
+            break;
         default:
             window.alert(testType + " er ikke understøttet lige nu");
             break;
     }
+}
+
+function getPlusAnswer(questionNumber) {
+    var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
+    var question = testInfo.questions[questionNumber].Question;
+    var Results = question.question.replace(/[^\d+,]/g, '');
+    Results = math.eval(Results);
+    return Results
 }
 
 function getMultAnswers(questionNumber, lookFor) {
@@ -103,7 +115,7 @@ function resultLoaded() {
         isTarget = false,
         loadCheck;
     for (i = 0; i < document.getElementsByClassName("no-link").length; i += 1) {
-        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)") {
+        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 4281 + 346 (4-cifret plus 3-cifret)") {
             isTarget = true;
         }
     }
