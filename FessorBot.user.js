@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      3.0
+// @version      3.1
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -46,7 +46,7 @@ function testLoaded() {
             saveAnswers([0, 0, 0, id4, id5]);
             break;
         case "4281 + 346 (4-cifret plus 3-cifret)":
-            saveAnswers([getPlusAnswer(0), getPlusAnswer(1), getPlusAnswer(2), getPlusAnswer(3), getPlusAnswer(4)]);
+            saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
             break;
         default:
             window.alert(testType + " er ikke understøttet lige nu");
@@ -54,7 +54,7 @@ function testLoaded() {
     }
 }
 
-function getPlusAnswer(questionNumber) {
+function getMathAnswer(questionNumber) {
     var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     var question = testInfo.questions[questionNumber].Question;
     var Results = question.question.replace(/[^\d+,]/g, '');
