@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      3.1
+// @version      3.2
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -65,7 +65,7 @@ function getMathAnswer(questionNumber) {
 function getMultAnswers(questionNumber, lookFor) {
     var correctAnswer;
     var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < testInfo.questions[questionNumber].answers.length; i++) {
         var lookAt = testInfo.questions[questionNumber].answers[i].Answer.answer;
         if(lookAt.indexOf(lookFor) > -1) {
             correctAnswer = i;
