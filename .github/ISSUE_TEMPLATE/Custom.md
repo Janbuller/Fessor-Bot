@@ -1,15 +1,11 @@
 ---
-name: Fejl rapport
-about: Forklar en fejl så jeg kan fikse det.
+name: Tilføj opgave
+about: Anbefal en opgave at tilføje
 
 ---
 
-**Hvad**
-Hvad sker der?
-Hvad skulle der ske?
+**Opgavens Nave**
+Det fulde navn på opgaven f. eks. "4281 + 346 (4-cifret plus 3-cifret)"
 
-**Hvordan**
-Hvordan får du fejlen til at ske?
-
-**Mere**
-Har du mere nyttigt info?
+**Begrundelse**
+Hvorfor skal jeg tilføje denne opgave.
