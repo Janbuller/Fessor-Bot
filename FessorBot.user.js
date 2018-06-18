@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      4.0
+// @version      5.0
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -51,6 +51,9 @@ function testLoaded() {
         case "5 + 23 (1-cifret plus 2-cifret uden mente)":
             saveAnswers([getMultAnswers(0, getMathAnswer(0)), getMultAnswers(1, getMathAnswer(1)), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
             break;
+        case "1-cifret gange 1-cifret":
+            saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
+            break;
         default:
             window.alert(testType + " er ikke understøttet lige nu");
             break;
@@ -60,7 +63,8 @@ function testLoaded() {
 function getMathAnswer(questionNumber) {
     var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     var question = testInfo.questions[questionNumber].Question;
-    var Results = question.question.replace(/[^\d+,]/g, '');
+    var Results = question.question.replace(/[^\d+,⋅]/g, '');
+    Results = Results.replace("⋅", "*");
     Results = math.eval(Results);
     return Results
 }
@@ -118,7 +122,7 @@ function resultLoaded() {
         isTarget = false,
         loadCheck;
     for (i = 0; i < document.getElementsByClassName("no-link").length; i += 1) {
-        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 4281 + 346 (4-cifret plus 3-cifret)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML ===  "Resultat for: 5 + 23 (1-cifret plus 2-cifret uden mente)") {
+        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 4281 + 346 (4-cifret plus 3-cifret)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 5 + 23 (1-cifret plus 2-cifret uden mente)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 1-cifret gange 1-cifret") {
             isTarget = true;
         }
     }
