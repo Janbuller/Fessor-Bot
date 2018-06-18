@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      3.2
+// @version      4.0
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -47,6 +47,9 @@ function testLoaded() {
             break;
         case "4281 + 346 (4-cifret plus 3-cifret)":
             saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
+            break;
+        case "5 + 23 (1-cifret plus 2-cifret uden mente)":
+            saveAnswers([getMultAnswers(0, getMathAnswer(0)), getMultAnswers(1, getMathAnswer(1)), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
             break;
         default:
             window.alert(testType + " er ikke understøttet lige nu");
@@ -115,7 +118,7 @@ function resultLoaded() {
         isTarget = false,
         loadCheck;
     for (i = 0; i < document.getElementsByClassName("no-link").length; i += 1) {
-        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 4281 + 346 (4-cifret plus 3-cifret)") {
+        if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 4281 + 346 (4-cifret plus 3-cifret)" || document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" || document.getElementsByClassName("no-link")[i].innerHTML ===  "Resultat for: 5 + 23 (1-cifret plus 2-cifret uden mente)") {
             isTarget = true;
         }
     }

@@ -26,3 +26,4 @@ Se listen i bunden for mere.
 * "Gang med 0"
 * "Gang med 0 (flere faktorer)"
 * "4281 + 346 (4-cifret plus 3-cifret)"
+* "5 + 23 (1-cifret plus 2-cifret uden mente)"
