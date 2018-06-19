@@ -29,3 +29,4 @@ Se listen i bunden for mere.
 * "5 + 23 (1-cifret plus 2-cifret uden mente)"
 * "1-cifret gange 1-cifret"
 * "31 + 56 (2-cifret plus 2-cifret uden mente)"
+* "37 + 28 (2-cifret plus 2-cifret med mente)"
