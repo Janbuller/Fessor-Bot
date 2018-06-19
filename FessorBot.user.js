@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      7.0
+// @version      8.0
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -59,6 +59,12 @@ function testLoaded() {
             break;
         case "37 + 28 (2-cifret plus 2-cifret med mente)":
             saveAnswers([getMultAnswers(0, getMathAnswer(0)), getMultAnswers(1, getMathAnswer(1)), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
+            break;
+        case "10 + 39 + 51 + 24 (Sum med fire 2-cifrede tal)":
+            saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
+            break;
+        case "Gangemetode 1 (12 gange 34)":
+            saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
             break;
         default:
             window.alert(testType + " er ikke understøttet lige nu");
@@ -135,7 +141,9 @@ function resultLoaded() {
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 5 + 23 (1-cifret plus 2-cifret uden mente)" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 1-cifret gange 1-cifret" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 31 + 56 (2-cifret plus 2-cifret uden mente)" ||
-            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 37 + 28 (2-cifret plus 2-cifret med mente)") {
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 37 + 28 (2-cifret plus 2-cifret med mente)" ||
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 10 + 39 + 51 + 24 (Sum med fire 2-cifrede tal)" ||
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gangemetode 1 (12 gange 34)") {
                 isTarget = true;
         }
     }
