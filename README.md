@@ -31,3 +31,4 @@ Se listen i bunden for mere.
 * "31 + 56 (2-cifret plus 2-cifret uden mente)"
 * "37 + 28 (2-cifret plus 2-cifret med mente)"
 * "Gangemetode 1 (12 gange 34)"
+* "7 + 46 (1-cifret plus 2-cifret med mente)"

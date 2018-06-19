@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      8.0
+// @version      9.0
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -66,8 +66,11 @@ function testLoaded() {
         case "Gangemetode 1 (12 gange 34)":
             saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
             break;
+        case "7 + 46 (1-cifret plus 2-cifret med mente)":
+            saveAnswers([getMultAnswers(0, getMathAnswer(0)), getMultAnswers(1, getMathAnswer(1)), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
+            break;
         default:
-            window.alert(testType + " er ikke understøttet lige nu");
+            window.alert(testType + " er ikke understøttet af fessorBot");
             break;
     }
 }
@@ -76,8 +79,8 @@ function getMathAnswer(questionNumber) {
     var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     var question = testInfo.questions[questionNumber].Question;
     var Results = question.question.replace(/[^\d+,⋅]/g, '');
-    Results = Results.replace("⋅", "*");
-    Results = math.eval(Results);
+    Results = Results.replace(/⋅/g, "*");
+    Results = math.eval(Results).toString();
     return Results
 }
 
@@ -143,9 +146,11 @@ function resultLoaded() {
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 31 + 56 (2-cifret plus 2-cifret uden mente)" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 37 + 28 (2-cifret plus 2-cifret med mente)" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 10 + 39 + 51 + 24 (Sum med fire 2-cifrede tal)" ||
-            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gangemetode 1 (12 gange 34)") {
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gangemetode 1 (12 gange 34)" ||
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 3,4 + 2,5 (plus med decimaltal)" ||
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 7 + 46(1 - cifret plus 2 - cifret med mente)") {
                 isTarget = true;
-        }
+        } 
     }
     if (isTarget) {
         document.getElementById("recreateTestBtn").click();
