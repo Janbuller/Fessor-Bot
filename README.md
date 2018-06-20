@@ -30,5 +30,6 @@ Se listen i bunden for mere.
 * "1-cifret gange 1-cifret"
 * "31 + 56 (2-cifret plus 2-cifret uden mente)"
 * "37 + 28 (2-cifret plus 2-cifret med mente)"
+* "10 + 39 + 51 + 24 (Sum med fire 2-cifrede tal)"
 * "Gangemetode 1 (12 gange 34)"
 * "7 + 46 (1-cifret plus 2-cifret med mente)"
