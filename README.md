@@ -1,6 +1,6 @@
 # FessorBot
-Fessor Bot løser automatisk forskellige opgaver.
-Se listen i bunden for mere.
+Fessor Bot er et userscript der automatisk løser forskellige matematikfessor opgaver.<br />
+I bunden kan du se de forskellige understøttede opgaver.
 
 # Installation
 1. Installer en userscript manager til din browser, jeg anbefaler tampermonkey:
@@ -9,6 +9,8 @@ Se listen i bunden for mere.
 * [Safari](https://safari.tampermonkey.net/tampermonkey.safariextz)
 * [Edge](https://www.microsoft.com/store/apps/9NBLGGH5162S)
 * [Opera Next](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)
+* [Dolphin (Android)](https://play.google.com/store/apps/details?id=net.tampermonkey.dolphin)
+* [UC Browser (Android)](https://play.google.com/store/apps/details?id=net.tampermonkey.uc)
 
 2. Installer scriptet
 * Tryk [her](https://github.com/Janbuller/Better-Fessor/raw/master/FessorBot.user.js)
