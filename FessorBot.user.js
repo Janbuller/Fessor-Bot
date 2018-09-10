@@ -97,22 +97,36 @@ function testLoaded() {
     }
 }
 
+// Gets the text for the questionNumber and evaluate the equation
 function getMathAnswer(questionNumber) {
+    // Gets the text for the questionNumber
     var question = testInfo.questions[questionNumber].Question;
+    // Gets only the math parts
     var Results = question.question.replace(/[^\d+,⋅-]/g, '');
+    // Replaces the character used by the website with a *
     Results = Results.replace(/⋅/g, "*");
+    // Evaluates the equation
     Results = math.eval(Results).toString();
+    // Returns the results
     return Results
 }
 
-function getMultAnswers(questionNumber, lookFor) {
+// Finds the id of the answer in multiple choice questions
+function getMultAnswers(questionNumber, lookFor) {¨
+    // Creates correctAnswer var for later
     var correctAnswer;
+
+    // Goes through all the different possible answers
     for (var i = 0; i < testInfo.questions[questionNumber].answers.length; i++) {
+        // Creates variable lookAt and sets it to the text of the current answer
         var lookAt = testInfo.questions[questionNumber].answers[i].Answer.answer;
+        // Looks at if the text to lookFor is in the text to lookAt
         if (lookAt.indexOf(lookFor) > -1) {
+            // Changes correctAnswer to the current answer
             correctAnswer = i;
         }
     }
+    // Returns the correct answers id
     return testInfo.questions[questionNumber].answers[correctAnswer].Answer.id;
 }
 
