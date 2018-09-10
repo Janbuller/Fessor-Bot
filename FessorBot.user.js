@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      10.0
+// @version      11.0
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -41,8 +41,8 @@ function testLoaded() {
             saveAnswers([0, 0, 0, 0, 0]);
             break;
         case "Gang med 0 (flere faktorer)":
-            var id4 =  getMultAnswers(3, 0);
-            var id5 =  getMultAnswers(4, 0);
+            var id4 = getMultAnswers(3, 0);
+            var id5 = getMultAnswers(4, 0);
             saveAnswers([0, 0, 0, id4, id5]);
             break;
         case "4281 + 346 (4-cifret plus 3-cifret)":
@@ -69,6 +69,9 @@ function testLoaded() {
         case "7 + 46 (1-cifret plus 2-cifret med mente)":
             saveAnswers([getMultAnswers(0, getMathAnswer(0)), getMultAnswers(1, getMathAnswer(1)), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
             break;
+        case "1034 - 80 (4-cifret minus 2-cifret)":
+            saveAnswers([getMultAnswers(0, getMathAnswer(0)), getMathAnswer(1), getMultAnswers(2, getMathAnswer(2)), getMathAnswer(3), getMathAnswer(4)]);
+            break;
         default:
             window.alert(testType + " er ikke understøttet af fessorBot");
             break;
@@ -78,7 +81,7 @@ function testLoaded() {
 function getMathAnswer(questionNumber) {
     var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     var question = testInfo.questions[questionNumber].Question;
-    var Results = question.question.replace(/[^\d+,⋅]/g, '');
+    var Results = question.question.replace(/[^\d+,⋅-]/g, '');
     Results = Results.replace(/⋅/g, "*");
     Results = math.eval(Results).toString();
     return Results
@@ -89,7 +92,7 @@ function getMultAnswers(questionNumber, lookFor) {
     var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     for (var i = 0; i < testInfo.questions[questionNumber].answers.length; i++) {
         var lookAt = testInfo.questions[questionNumber].answers[i].Answer.answer;
-        if(lookAt.indexOf(lookFor) > -1) {
+        if (lookAt.indexOf(lookFor) > -1) {
             correctAnswer = i;
         }
     }
@@ -148,9 +151,10 @@ function resultLoaded() {
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 10 + 39 + 51 + 24 (Sum med fire 2-cifrede tal)" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gangemetode 1 (12 gange 34)" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 3,4 + 2,5 (plus med decimaltal)" ||
-            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 7 + 46(1 - cifret plus 2 - cifret med mente)") {
-                isTarget = true;
-        } 
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 7 + 46 (1-cifret plus 2-cifret med mente)" ||
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 1034 - 80 (4-cifret minus 2-cifret)") {
+            isTarget = true;
+        }
     }
     if (isTarget) {
         document.getElementById("recreateTestBtn").click();

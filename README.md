@@ -35,3 +35,4 @@ I bunden kan du se de forskellige understøttede opgaver.
 * "10 + 39 + 51 + 24 (Sum med fire 2-cifrede tal)"
 * "Gangemetode 1 (12 gange 34)"
 * "7 + 46 (1-cifret plus 2-cifret med mente)"
+* "1034 - 80 (4-cifret minus 2-cifret)"
