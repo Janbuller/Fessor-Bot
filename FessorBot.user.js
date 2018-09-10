@@ -41,9 +41,7 @@ function testLoaded() {
             saveAnswers([0, 0, 0, 0, 0]);
             break;
         case "Gang med 0 (flere faktorer)":
-            var id4 = getMultAnswers(3, 0);
-            var id5 = getMultAnswers(4, 0);
-            saveAnswers([0, 0, 0, id4, id5]);
+            saveAnswers([0, 0, 0, getMultAnswers(3, 0), getMultAnswers(4, 0)]);
             break;
         case "4281 + 346 (4-cifret plus 3-cifret)":
             saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
