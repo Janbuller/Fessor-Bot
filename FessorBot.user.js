@@ -112,7 +112,7 @@ function getMathAnswer(questionNumber) {
 }
 
 // Finds the id of the answer in multiple choice questions
-function getMultAnswers(questionNumber, lookFor) {¨
+function getMultAnswers(questionNumber, lookFor) {
     // Creates correctAnswer var for later
     var correctAnswer;
 
