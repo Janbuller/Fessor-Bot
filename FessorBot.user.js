@@ -12,6 +12,9 @@
 // @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
 // ==/UserScript==
 
+// Create testInfo var for later
+var testInfo;
+
 // Run on script start
 function init() {
     'use strict';
@@ -49,6 +52,9 @@ function testLoaded() {
     'use strict';
     // Get testType
     var testType = document.getElementsByClassName("no-link")[0].innerHTML;
+
+    // Set testInfo for later
+    testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     // Check if the testType is supported and if so save the correct answers
     
     switch (testType) {
@@ -92,7 +98,6 @@ function testLoaded() {
 }
 
 function getMathAnswer(questionNumber) {
-    var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     var question = testInfo.questions[questionNumber].Question;
     var Results = question.question.replace(/[^\d+,⋅-]/g, '');
     Results = Results.replace(/⋅/g, "*");
@@ -102,7 +107,6 @@ function getMathAnswer(questionNumber) {
 
 function getMultAnswers(questionNumber, lookFor) {
     var correctAnswer;
-    var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
     for (var i = 0; i < testInfo.questions[questionNumber].answers.length; i++) {
         var lookAt = testInfo.questions[questionNumber].answers[i].Answer.answer;
         if (lookAt.indexOf(lookFor) > -1) {
@@ -115,7 +119,6 @@ function getMultAnswers(questionNumber, lookFor) {
 function saveAnswers(answers) {
     'use strict';
     var userInfo = JSON.parse(loadJsPage.toString(10).match(/{"reloadUserData":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
-        testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         xhr,
         returned = [];
     for (let i = 0; i < answers.length; i += 1) {
