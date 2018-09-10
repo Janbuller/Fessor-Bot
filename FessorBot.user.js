@@ -12,30 +12,45 @@
 // @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
 // ==/UserScript==
 
+// Run on script start
 function init() {
     'use strict';
+    // Create variables
     var loadCheck,
         pathName = window.location.pathname;
-    if (pathName.match(/^\/test\/fivesharp\/$/)) { //Hvis vi er ved en "fivesharp" test
+
+    // Check if it's a Five Sharp test
+    if (pathName.match(/^\/test\/fivesharp\/$/)) {
+        //Check if nextButton is clickable every 100 ms
         loadCheck = setInterval(function () {
             if (document.getElementsByClassName("nextButton")[0] && !document.getElementsByClassName("nextButton disabled")[0]) {
+                // Run function testLoaded
                 testLoaded();
+                // Stop checking if button is clickable
                 clearInterval(loadCheck);
             }
         }, 100);
-    } else if (pathName.match(/^\/test\/result\/\d+$/)) { //Hvis vi er ved resultatet af en test
+    // Check if it's the result of a Five Sharp test
+    } else if (pathName.match(/^\/test\/result\/\d+$/)) {
+        //Check if recreateTestBtn is clickable every 100 ms
         loadCheck = setInterval(function () {
             if (document.getElementById("recreateTestBtn") && document.getElementsByClassName("evaluateAnswer")[0]) {
+                // Run function resultLoaded
                 resultLoaded();
+                // Stop checking if button is clickable
                 clearInterval(loadCheck);
             }
         }, 100);
     }
+
 }
 
 function testLoaded() {
     'use strict';
+    // Get testType
     var testType = document.getElementsByClassName("no-link")[0].innerHTML;
+    // Check if the testType is supported and if so save the correct answers
+    
     switch (testType) {
         case "Gang med 0":
             saveAnswers([0, 0, 0, 0, 0]);
