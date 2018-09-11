@@ -8,8 +8,8 @@
 // @grant        none
 // @require      https://smtpjs.com/smtp.js
 // @require      https://unpkg.com/mathjs@4.1.1/dist/math.min.js
-// @updateURL    https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
-// @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
+// @updateURL    https://github.com/Janbuller/Fessor-Bot/raw/master/FessorBot.user.js
+// @downloadURL  https://github.com/Janbuller/Fessor-Bot/raw/master/FessorBot.user.js
 // ==/UserScript==
 
 // Create testInfo var for later
