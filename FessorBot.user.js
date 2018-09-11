@@ -153,22 +153,33 @@ function saveAnswers(answers) {
     }
 }
 
+// Automatically presses the finishTest button
 function finishTest() {
     'use strict';
+    // Create loadCheck variable for later
     var loadCheck;
+    // Click the first button to finish the test
     document.getElementsByClassName("big actionButton primary")[0].click();
+    // Check (every 100 ms) if the next button to finish the test is loaded and if so click it and stop checking
     loadCheck = setInterval(function () {
+        // Check if the button is loaded
         if (document.getElementsByClassName("big actionButton primary")[1]) {
+            // Click the next button
             document.getElementsByClassName("big actionButton primary")[1].click();
+            // Stop checking if the button is loaded
             clearInterval(loadCheck);
         }
     }, 100);
 }
 
+// Restart the test if result screen is loaded
 function resultLoaded() {
+    // Create some variables for later
     var i,
         isTarget = false,
         loadCheck;
+    
+    // Check if the result screen is for any of the supported tests and if so set isTarget to true
     for (i = 0; i < document.getElementsByClassName("no-link").length; i += 1) {
         if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" ||
@@ -186,16 +197,25 @@ function resultLoaded() {
             isTarget = true;
         }
     }
+
+    // If isTarget is true (You're on the result screen of a supported test)
     if (isTarget) {
+        // Clicks the first button to restart the test
         document.getElementById("recreateTestBtn").click();
+        // Clicks the first button to restart the test and checks if the next button is there and if so click it and stop checking
         loadCheck = setInterval(function () {
+            // Clicks the first button to restart the test
             document.getElementById("recreateTestBtn").click();
+            // Checks if the next button is there
             if (document.getElementsByClassName("big actionButton primary")[0]) {
+                // Click the next button
                 document.getElementsByClassName("big actionButton primary")[0].click();
+                // Stop Checking
                 clearInterval(loadCheck);
             }
         }, 100);
     }
 }
 
+// Call the init function
 init();
