@@ -12,7 +12,7 @@
 // @downloadURL  https://github.com/Janbuller/Fessor-Bot/raw/master/FessorBot.user.js
 // ==/UserScript==
 
-// Create testInfo var for later
+// Create testInfo variable for later
 var testInfo;
 
 // Run on script start
