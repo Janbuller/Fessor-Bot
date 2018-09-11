@@ -12,38 +12,57 @@
 // @downloadURL  https://raw.githubusercontent.com/Janbuller/Better-Fessor/master/FessorBot.user.js
 // ==/UserScript==
 
+// Create testInfo var for later
+var testInfo;
+
+// Run on script start
 function init() {
     'use strict';
+    // Create variables
     var loadCheck,
         pathName = window.location.pathname;
-    if (pathName.match(/^\/test\/fivesharp\/$/)) { //Hvis vi er ved en "fivesharp" test
+
+    // Check if it's a Five Sharp test
+    if (pathName.match(/^\/test\/fivesharp\/$/)) {
+        //Check if nextButton is clickable every 100 ms
         loadCheck = setInterval(function () {
             if (document.getElementsByClassName("nextButton")[0] && !document.getElementsByClassName("nextButton disabled")[0]) {
+                // Run function testLoaded
                 testLoaded();
+                // Stop checking if button is clickable
                 clearInterval(loadCheck);
             }
         }, 100);
-    } else if (pathName.match(/^\/test\/result\/\d+$/)) { //Hvis vi er ved resultatet af en test
+    // Check if it's the result of a Five Sharp test
+    } else if (pathName.match(/^\/test\/result\/\d+$/)) {
+        //Check if recreateTestBtn is clickable every 100 ms
         loadCheck = setInterval(function () {
             if (document.getElementById("recreateTestBtn") && document.getElementsByClassName("evaluateAnswer")[0]) {
+                // Run function resultLoaded
                 resultLoaded();
+                // Stop checking if button is clickable
                 clearInterval(loadCheck);
             }
         }, 100);
     }
+
 }
 
 function testLoaded() {
     'use strict';
+    // Get testType
     var testType = document.getElementsByClassName("no-link")[0].innerHTML;
+
+    // Set testInfo for later
+    testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
+    // Check if the testType is supported and if so save the correct answers
+    
     switch (testType) {
         case "Gang med 0":
             saveAnswers([0, 0, 0, 0, 0]);
             break;
         case "Gang med 0 (flere faktorer)":
-            var id4 = getMultAnswers(3, 0);
-            var id5 = getMultAnswers(4, 0);
-            saveAnswers([0, 0, 0, id4, id5]);
+            saveAnswers([0, 0, 0, getMultAnswers(3, 0), getMultAnswers(4, 0)]);
             break;
         case "4281 + 346 (4-cifret plus 3-cifret)":
             saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
@@ -78,31 +97,42 @@ function testLoaded() {
     }
 }
 
+// Gets the text for the questionNumber and evaluate the equation
 function getMathAnswer(questionNumber) {
-    var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
+    // Gets the text for the questionNumber
     var question = testInfo.questions[questionNumber].Question;
+    // Gets only the math parts
     var Results = question.question.replace(/[^\d+,⋅-]/g, '');
+    // Replaces the character used by the website with a *
     Results = Results.replace(/⋅/g, "*");
+    // Evaluates the equation
     Results = math.eval(Results).toString();
+    // Returns the results
     return Results
 }
 
+// Finds the id of the answer in multiple choice questions
 function getMultAnswers(questionNumber, lookFor) {
+    // Creates correctAnswer var for later
     var correctAnswer;
-    var testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
+
+    // Goes through all the different possible answers
     for (var i = 0; i < testInfo.questions[questionNumber].answers.length; i++) {
+        // Creates variable lookAt and sets it to the text of the current answer
         var lookAt = testInfo.questions[questionNumber].answers[i].Answer.answer;
+        // Looks at if the text to lookFor is in the text to lookAt
         if (lookAt.indexOf(lookFor) > -1) {
+            // Changes correctAnswer to the current answer
             correctAnswer = i;
         }
     }
+    // Returns the correct answers id
     return testInfo.questions[questionNumber].answers[correctAnswer].Answer.id;
 }
 
 function saveAnswers(answers) {
     'use strict';
     var userInfo = JSON.parse(loadJsPage.toString(10).match(/{"reloadUserData":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
-        testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, "")),
         xhr,
         returned = [];
     for (let i = 0; i < answers.length; i += 1) {
@@ -123,22 +153,33 @@ function saveAnswers(answers) {
     }
 }
 
+// Automatically presses the finishTest button
 function finishTest() {
     'use strict';
+    // Create loadCheck variable for later
     var loadCheck;
+    // Click the first button to finish the test
     document.getElementsByClassName("big actionButton primary")[0].click();
+    // Check (every 100 ms) if the next button to finish the test is loaded and if so click it and stop checking
     loadCheck = setInterval(function () {
+        // Check if the button is loaded
         if (document.getElementsByClassName("big actionButton primary")[1]) {
+            // Click the next button
             document.getElementsByClassName("big actionButton primary")[1].click();
+            // Stop checking if the button is loaded
             clearInterval(loadCheck);
         }
     }, 100);
 }
 
+// Restart the test if result screen is loaded
 function resultLoaded() {
+    // Create some variables for later
     var i,
         isTarget = false,
         loadCheck;
+    
+    // Check if the result screen is for any of the supported tests and if so set isTarget to true
     for (i = 0; i < document.getElementsByClassName("no-link").length; i += 1) {
         if (document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: Gang med 0 (flere faktorer)" ||
@@ -156,16 +197,25 @@ function resultLoaded() {
             isTarget = true;
         }
     }
+
+    // If isTarget is true (You're on the result screen of a supported test)
     if (isTarget) {
+        // Clicks the first button to restart the test
         document.getElementById("recreateTestBtn").click();
+        // Clicks the first button to restart the test and checks if the next button is there and if so click it and stop checking
         loadCheck = setInterval(function () {
+            // Clicks the first button to restart the test
             document.getElementById("recreateTestBtn").click();
+            // Checks if the next button is there
             if (document.getElementsByClassName("big actionButton primary")[0]) {
+                // Click the next button
                 document.getElementsByClassName("big actionButton primary")[0].click();
+                // Stop Checking
                 clearInterval(loadCheck);
             }
         }, 100);
     }
 }
 
+// Call the init function
 init();
