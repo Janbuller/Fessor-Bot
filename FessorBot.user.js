@@ -55,8 +55,8 @@ function testLoaded() {
 
     // Set testInfo for later
     testInfo = JSON.parse(loadJsPage.toString(10).match(/{"questions":\[{"Question":[\s\S]*?}}\);/)[0].replace(/\);/, ""));
+
     // Check if the testType is supported and if so save the correct answers
-    
     switch (testType) {
         case "Gang med 0":
             saveAnswers([0, 0, 0, 0, 0]);
