@@ -37,3 +37,4 @@ I bunden kan du se de forskellige understøttede opgaver.
 * "7 + 46 (1-cifret plus 2-cifret med mente)"
 * "1034 - 80 (4-cifret minus 2-cifret)"
 * "12 - 5 med prikker"
+* "1234 + 5678 (4-cifrede tal)"

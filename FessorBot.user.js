@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
 // @namespace    http://tampermonkey.net/
-// @version      12.0
+// @version      13.0
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
@@ -93,7 +93,10 @@ function testLoaded() {
             break;
         case "12 - 5 med prikker":
             saveAnswers([getMultAnswers(0, getMathAnswer(0)), getMultAnswers(1, getMathAnswer(1)), getMultAnswers(2, getMathAnswer(2)), getMultAnswers(3, getMathAnswer(3)), getMultAnswers(4, getMathAnswer(4))])
-        break;
+            break;
+        case "1234 + 5678 (4-cifrede tal)":
+            saveAnswers([getMathAnswer(0), getMathAnswer(1), getMathAnswer(2), getMathAnswer(3), getMathAnswer(4)]);
+            break;
         default:
             window.alert(testType + " er ikke understøttet af fessorBot");
             break;
@@ -197,7 +200,8 @@ function resultLoaded() {
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 3,4 + 2,5 (plus med decimaltal)" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 7 + 46 (1-cifret plus 2-cifret med mente)" ||
             document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 1034 - 80 (4-cifret minus 2-cifret)" ||
-            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 12 - 5 med prikker") {
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 12 - 5 med prikker" ||
+            document.getElementsByClassName("no-link")[i].innerHTML === "Resultat for: 1234 + 5678 (4-cifrede tal)"){
             isTarget = true;
         }
     }
