@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         fessorBot
-// @namespace    http://tampermonkey.net/
-// @version      13.0
+// @namespace    http://https://janbuller.github.io/Fessor-Bot/
+// @version      13.1
 // @description  Løse Gang med 0 Opgaver
 // @author       LaZZe ( https://github.com/Janbuller )
 // @match        https://www.matematikfessor.dk/test/*
