@@ -16,7 +16,7 @@ function init() {
     Opgave = SkafOpgave();
     switch(Opgave) {
         case "topic:afrunding-af-tal-96":
-            Afrunding();
+            setInterval(function() {Afrunding()}, 100);
             break;
     }
 }
