@@ -16,7 +16,10 @@ function init() {
     Opgave = SkafOpgave();
     switch(Opgave) {
         case "topic:afrunding-af-tal-96":
-            Afrunding();
+            setInterval(function() {Afrunding()}, 100);
+            break;
+        case "topic:reduktion-med-tal-86":
+            setInterval(function() {ReduktionMedTal()}, 100);
             break;
     }
 }
@@ -24,6 +27,16 @@ function init() {
 function SkafOpgave() {
 
     return window.location.pathname.slice(21, window.location.pathname.length);
+}
+
+function ReduktionMedTal() {
+    var Reducer = document.getElementsByClassName("questionText")[0].children[0].innerText.slice(0, -11).match(/[\d,()+−:⋅]+/g).join("");
+    Reducer = Reducer.replace("+", "+");
+    Reducer = Reducer.replace("−", "-");
+    Reducer = Reducer.replace(":", "/");
+    Reducer = Reducer.replace("⋅", "*");
+    Reducer = math.eval(Reducer);
+    SendSvar(Reducer);
 }
 
 function Afrunding() {
@@ -35,12 +48,15 @@ function Afrunding() {
 
     Afrundet = parseFloat(Afrundet).toFixed(AfrundMed);
     Afrundet = Afrundet.replace(".", ",");
+    SendSvar(Afrundet);
+}
 
+function SendSvar(svar) {
     if (document.getElementsByClassName("questionText")[0].parentNode.children[1] != "[object HTMLUListElement]") {
-        document.getElementsByClassName("answerInput")[0].value = Afrundet;
+        document.getElementsByClassName("answerInput")[0].value = svar;
     } else if (document.getElementsByClassName("questionText")[0].parentNode.children[1] == "[object HTMLUListElement]") {
         for (var i = 0; i < document.getElementsByClassName("questionText")[0].parentNode.children[1].children.length; i++) {
-            if (document.getElementsByClassName("questionText")[0].parentNode.children[1].children[i].innerText.slice(0, -10) == Afrundet) {
+            if (document.getElementsByClassName("questionText")[0].parentNode.children[1].children[i].innerText.slice(0, -10) == svar) {
                 document.getElementsByClassName("questionText")[0].parentNode.children[1].children[i].click();
             } else if (i == document.getElementsByClassName("questionText")[0].parentNode.children[1].children.length) {
                 document.getElementsByClassName("questionText")[0].parentNode.children[1].children[0].click();

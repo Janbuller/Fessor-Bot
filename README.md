@@ -31,7 +31,7 @@ I bunden kan du se de forskellige understøttede opgaver.
 
 3. Start opgave:
 * Scroll ned til bunden af denne side og klik på linket til en supertræneren opgave
-* Hold enter nede (Scriptet kan ikke selv gå videre)
+* Hold enter nede (Scriptet kan ikke selv gå videre). Du kan også bruge [AutoWebEnter](https://github.com/Janbuller/AutoWebEnter/releases).
 # Understøttede opgaver
 ## 5 skarpe
 * "Gang med 0"
@@ -49,3 +49,4 @@ I bunden kan du se de forskellige understøttede opgaver.
 * "1234 + 5678 (4-cifrede tal)"
 ## SuperTræneren
 * [Afrunding af tal](https://www.matematikfessor.dk/adaptive_test/index/topic:afrunding-af-tal-96)
+* [Reduktion med tal](https://www.matematikfessor.dk/adaptive_test/index/topic:reduktion-med-tal-86)
