@@ -26,7 +26,7 @@ I bunden kan du se de forskellige understøttede opgaver.
 * Start testen
 ## SuperTræneren
 2. Installer scriptet
-* Tryk [her](https://github.com/Janbuller/Fessor-Bot/raw/master/SuperTræneren.user.js)
+* Tryk [her](https://raw.githubusercontent.com/Janbuller/Fessor-Bot/master/SuperTræner.user.js) 
 * Tryk på Install
 
 3. Start opgave:
