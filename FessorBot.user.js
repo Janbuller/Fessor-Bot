@@ -181,9 +181,9 @@ function finishTest() {
 // Restart the test if result screen is loaded
 function resultLoaded() {
     // Create some variables for later
-    var i,
-        isTarget = false,
-        loadCheck;
+    var i;
+    var isTarget = false;
+    var loadCheck;
     
     // Check if the result screen is for any of the supported tests and if so set isTarget to true
     for (i = 0; i < document.getElementsByClassName("no-link").length; i += 1) {

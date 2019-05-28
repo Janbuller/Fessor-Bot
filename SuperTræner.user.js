@@ -67,6 +67,7 @@ function SendSvar(svar) {
     try {
         document.getElementsByClassName("big primary")[0].click()
     } catch(error) {
+        console.log("error: " + error);
     }
 }
 init();
