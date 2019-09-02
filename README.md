@@ -1,3 +1,4 @@
+> English guide availible on [My Website](https://thegamersofpro.com/FessorBot/index.php)
 # FessorBot
 Fessor Bot er et userscript der automatisk løser forskellige matematikfessor opgaver, både i 5 skarpe og i SuperTræneren.<br />
 I bunden kan du se de forskellige understøttede opgaver.
